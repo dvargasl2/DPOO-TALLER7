@@ -46,7 +46,7 @@ public class Tablero extends JPanel {
 
     boolean toggleLight(int row, int col) {
         lights[row][col] = !lights[row][col];
-        return lights[row][col]; // Devolver el nuevo estado de la luz
+        return lights[row][col]; 
     }
 
     

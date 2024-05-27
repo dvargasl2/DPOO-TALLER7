@@ -25,13 +25,11 @@ public class Ventana extends JFrame {
     private boolean[][] initialBoardState; // Para reiniciar el tablero
 
     public Ventana() {
-        // Establecer el tamaño inicial de la ventana
         this.setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Juego de LightsOut");
         this.setLayout(new BorderLayout());
 
-        // Panel superior para el tamaño y dificultad
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         topPanel.setBackground(Color.LIGHT_GRAY);  // Cambiar color de fondo
 
@@ -41,7 +39,6 @@ public class Ventana extends JFrame {
         taman.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Cambiar el tamaño del tablero según la selección
                 String selectedSize = (String) taman.getSelectedItem();
                 boardSize = Integer.parseInt(selectedSize.substring(0, 1));
                 boardPanel.setBoardSize(boardSize);
@@ -59,7 +56,6 @@ public class Ventana extends JFrame {
         dificultadGroup.add(medio);
         dificultadGroup.add(dificil);
 
-        // Añadir componentes al topPanel
         topPanel.add(tamanio);
         topPanel.add(taman);
         topPanel.add(dificultad);
@@ -67,7 +63,6 @@ public class Ventana extends JFrame {
         topPanel.add(medio);
         topPanel.add(dificil);
 
-        // Panel derecho para los botones de acción
         JPanel buttonPanel = new JPanel(new GridLayout(4, 1, 5, 5));
         buttonPanel.setBackground(Color.DARK_GRAY);  // Cambiar color de fondo
 
@@ -98,7 +93,7 @@ public class Ventana extends JFrame {
         top.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarTop10();
+
             }
         });
 
@@ -109,7 +104,6 @@ public class Ventana extends JFrame {
             }
         });
 
-        // Establecer un tamaño preferido para los botones
         Dimension buttonSize = new Dimension(150, 30);
         nuevo.setPreferredSize(buttonSize);
         reiniciar.setPreferredSize(buttonSize);
@@ -121,9 +115,8 @@ public class Ventana extends JFrame {
         buttonPanel.add(top);
         buttonPanel.add(cambJugador);
 
-        // Panel inferior para jugadas y jugador
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        bottomPanel.setBackground(Color.LIGHT_GRAY);  // Cambiar color de fondo
+        bottomPanel.setBackground(Color.LIGHT_GRAY);  
 
         JLabel jugadas = new JLabel("Jugadas:");
         jugadasT = new JTextField("0", 5);
@@ -137,11 +130,9 @@ public class Ventana extends JFrame {
         bottomPanel.add(jugador);
         bottomPanel.add(jugadorT);
 
-        // Panel central para el tablero
         boardPanel = new Tablero(boardSize);
-        boardPanel.setBackground(Color.BLACK);  // Cambiar color de fondo
+        boardPanel.setBackground(Color.BLACK);  
 
-        // Añadir los paneles al frame principal
         this.add(topPanel, BorderLayout.NORTH);
         this.add(buttonPanel, BorderLayout.EAST);
         this.add(bottomPanel, BorderLayout.SOUTH);
@@ -181,10 +172,7 @@ public class Ventana extends JFrame {
         }
     }
 
-    private void mostrarTop10() {
-        // Aquí debería implementar la lógica para mostrar el TOP-10
-        // Usar JDialog para mostrar los mejores puntajes
-    }
+
 
     private void cambiarJugador() {
         String nuevoJugador = JOptionPane.showInputDialog(this, "Ingrese el nombre del nuevo jugador:");
